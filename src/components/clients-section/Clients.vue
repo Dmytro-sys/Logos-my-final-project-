@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>Partner section</h1>
+    <h1>Clients section</h1>
   </div>
 </template>
 
 <style lang="scss" scoped>
-  @import './Partners.scss';
+  @import './Clients.scss';
 </style>

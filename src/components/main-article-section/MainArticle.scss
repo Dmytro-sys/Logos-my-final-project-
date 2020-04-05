@@ -1,3 +1,91 @@
-h1 {
-  color: greenyellow;
+.baner {
+  position: relative;
+  width: 100%;
+
+  &__wrap {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+  }
+
+  &__image-wrap {
+    width: 50%;
+    position: relative;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  &__info {
+    width: 50%;
+    padding: 110px;
+    position: relative;
+    z-index: 10;
+    background-color: var(--brand-color);
+  }
+
+  &__info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__info-date {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 7px;
+    color: var(--text-white);
+  }
+
+  &__info-link {
+    display: inline-block;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-decoration: underline;
+    color: var(--text-white);
+    padding: 5px 10px;
+    transition: var(--trans-global);
+  }
+  
+  &__info-link:hover {
+    color: var(--brand-color);
+    background-color: var(--text-white);
+    border-radius: 5px;
+    transform: scale(1.1);
+    transition: var(--trans-global);
+  }
+
+  &__info-title-text {
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 42px;
+    text-transform: uppercase;
+    color: var(--text-white);
+    padding-top: 65px;
+  }
+
+  &__info-subtitle-text {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 21px;
+    color: var(--text-white);
+    padding-top: 30px;
+  }
+
+  &__info-button {
+    padding-top: 55px;
+  }
 }

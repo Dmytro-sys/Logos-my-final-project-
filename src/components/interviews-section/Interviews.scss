@@ -1,3 +1,30 @@
-h1 {
-    color: rgb(67, 246, 22);
+.interwievs {
+
+  &__wrap {
+    padding-top: 60px;
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 18px;
+    text-transform: uppercase;
+    line-height: 27px;
+    color: var(--title-color);
+  }
+
+  &__small-card {
+    padding-top: 30px;
+  }
+
+}
+
+.small-card__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn__wrap {
+  text-align: center;
+  padding-top: 60px;
 }

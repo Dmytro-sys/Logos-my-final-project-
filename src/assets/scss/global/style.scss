@@ -36,3 +36,12 @@ img {
   background-color: rgba(216, 216, 216, 0.835);
   z-index: 5;
 }
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .8s ease;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}

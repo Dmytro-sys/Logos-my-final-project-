@@ -11,7 +11,7 @@ const routes = [
     component: Home,
   },
   {
-    path: '/:slug',
+    path: '/client',
     name: 'ClientPage',
     component: () => import('../views/ClientPage.vue'),
   },

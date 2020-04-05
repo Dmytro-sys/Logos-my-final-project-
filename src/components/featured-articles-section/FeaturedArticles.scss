@@ -1,3 +1,41 @@
-h1 {
-    color: rgb(68, 173, 73);
+.feautured {
+
+  &__title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    text-transform: uppercase;
+    color: var(--title-color);
+  }
+
+  &__large-cards {
+    padding-top: 30px;
+  }
+
+}
+
+.large-card__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* start feautured__small-card */
+
+.small-card {
+  &__wrap {
+    padding-top: 60px;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+}
+
+.btn__wrap {
+  text-align: center;
+  padding-top: 60px;
 }

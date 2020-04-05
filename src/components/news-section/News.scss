@@ -1,3 +1,27 @@
-h1 {
-    color: rgb(213, 246, 22);
+.news {
+
+  &__wrap {
+    padding-top: 30px;
+  }
+
+  &__title {
+    padding-bottom: 30px;
+    font-weight: 500;
+    font-size: 18px;
+    text-transform: uppercase;
+    line-height: 27px;
+    color: var(--title-color);
+  }
+
+}
+
+.small-card__list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn__wrap {
+  text-align: center;
+  padding-top: 60px;
 }

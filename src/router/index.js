@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import store from '@/store';
+
+import Home from '@/views/Home.vue';
+import loginRoute from '@/views/Login.vue';
 
 Vue.use(VueRouter);
 
@@ -25,12 +28,36 @@ const routes = [
     name: 'Article',
     component: () => import('../views/Article.vue'),
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: loginRoute,
+    meta: { notProtected: true },
+  },
 ];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+/* eslint-disable */
+router.beforeEach(async (to, next) => {
+  if (
+    to.matched.some((record) => record.meta.notProtected)
+    || store.getters['auth/isLogin']
+  ) {
+    return next;
+  }
+
+  store.dispatch('auth/login').then(
+    () => {
+      next();
+    },
+    () => {
+      next('/login');
+    },
+  );
 });
 
 export default router;

@@ -42,12 +42,12 @@ const router = new VueRouter({
   routes,
 });
 /* eslint-disable */
-router.beforeEach(async (to, next) => {
+router.beforeEach(async (to, from, next) => {
   if (
     to.matched.some((record) => record.meta.notProtected)
     || store.getters['auth/isLogin']
   ) {
-    return next;
+    return next();
   }
 
   store.dispatch('auth/login').then(

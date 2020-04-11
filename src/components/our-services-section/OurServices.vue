@@ -5,32 +5,35 @@
       <div class="container">
 
         <div class="services__wrap">
+          <h1>Hello</h1>
 
           <v-service-card
           :key="service.id"
-          v-for="service in services"
-          v-bind="service"
-          >
+          v-for="service of services"
+          v-bind="service">
           </v-service-card>
 
+          <pre>{{ services }}</pre>
+
         </div> <!-- end services__wrap -->
-
       </div> <!-- end container -->
-
     </section>
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'services',
   computed: {
     ...mapState('services', ['services']),
   },
+  methods: {
+    ...mapActions('services', ['getServices']),
+  },
   created() {
-    this.$store.dispatch('services/getServices');
+    this.getServices();
   },
 };
 </script>

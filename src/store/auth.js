@@ -8,7 +8,7 @@ const mutt = {
 export default {
   namespaced: true,
   state: {
-    token: localStorage.token || null,
+    token: null,
     error: null,
   },
   mutations: {

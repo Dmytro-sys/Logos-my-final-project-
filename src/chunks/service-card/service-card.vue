@@ -1,16 +1,16 @@
 <template>
   <div class="services__item">
     <div class="services__icon-wrap">
-      <img class="services__icon" alt="">
+      <img class="services__icon" :src="icon" alt="">
     </div>
-    <h4 class="services__title">{{ data.title }}</h4>
-    <p class="services__text"></p>
+    <h4 class="services__title">{{ title }}</h4>
+    <p class="services__text">{{ content }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['id', 'data'],
+  props: ['title', 'content', 'icon'],
 };
 </script>
 

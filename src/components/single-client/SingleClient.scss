@@ -1,0 +1,61 @@
+.client {
+
+  &__wrap {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__baner {
+    background-color: var(--brand-color);
+    padding: 55px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  &__image-wrap {
+    width: 50%;
+    margin: 55px 0;
+  }
+
+  &__img {
+    width: 100%;
+    height: auto;
+    object-fit: fill;
+  }
+
+  &__title {
+    width: 50%;
+    margin-bottom: 80px;
+
+    &-text {
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 21px;
+      color: var(--text-white);
+    }
+
+  }
+
+  &__content {
+    margin-top: 60px;
+
+    &-intro {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 39px;
+      margin-bottom: 30px;
+    }
+
+    &-about {
+      margin-bottom: 30px;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 21px;
+    }
+  }
+
+}

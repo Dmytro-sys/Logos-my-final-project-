@@ -4,47 +4,23 @@
       <div class="container">
         <div class="accordion__wrap">
 
-          <div class="accordion__item">
+          <div class="accordion__item"
+          v-for="accord in accsections"
+          :key="accord.id"
+          v-bind="accord"
+          >
 
-            <h3 class="accordion__item-title active" v-on:click="accordion">
-              At vero eos vet
+            <h3 class="accordion__item-title"
+            :class="{ active: accord.isActive }"
+            v-on:click="accordion">
+              {{ accord.title }}
             </h3>
 
             <p class="accordion__item-content">
-              Кто, по-вашему, этот мощный старик? Не говорите, вы не можете этого знать.
-              Это — гигант мысли, отец русской демократии и особа, приближенная к императору.
+              {{ accord.content }}
             </p>
 
           </div>
-
-          <div class="accordion__item">
-
-          <h3 class="accordion__item-title" v-on:click="accordion">
-            At vero eos vet
-          </h3>
-
-          <p class="accordion__item-content">
-            Кто, по-вашему, этот мощный старик? Не говорите,
-             вы не можете этого знать. Это — гигант
-            мысли, отец русской демократии и особа, приближенная к императору.
-          </p>
-
-          </div>
-
-          <div class="accordion__item">
-
-          <h3 class="accordion__item-title" v-on:click="accordion">
-            At vero eos vet
-          </h3>
-
-          <p class="accordion__item-content">
-            Кто, по-вашему, этот мощный старик? Не говорите,
-             вы не можете этого знать. Это — гигант
-            мысли, отец русской демократии и особа, приближенная к императору.
-          </p>
-
-          </div>
-
         </div>
       </div>
     </section>
@@ -55,7 +31,42 @@
 export default {
   name: 'Accordion',
   data() {
-    return {};
+    return {
+      accsections: [{
+        id: 1,
+        isActive: true,
+        title: 'Title 1',
+        content: `Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Asperiores,
+        error delectus vel sapiente id dolores 
+        inventore veniam ipsum, voluptatem sed aliquid,
+        eaque laborum in ex necessitatibus commodi? 
+        Fugiat, officiis rerum!`,
+      },
+      {
+        id: 2,
+        isActive: false,
+        title: 'Title 2',
+        content: `Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Asperiores,
+        error delectus vel sapiente id dolores 
+        inventore veniam ipsum, voluptatem sed aliquid,
+        eaque laborum in ex necessitatibus commodi? 
+        Fugiat, officiis rerum!`,
+      },
+      {
+        id: 3,
+        isActive: false,
+        title: 'Title 3',
+        content: `Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. Asperiores,
+        error delectus vel sapiente id dolores 
+        inventore veniam ipsum, voluptatem sed aliquid,
+        eaque laborum in ex necessitatibus commodi? 
+        Fugiat, officiis rerum!`,
+      },
+      ],
+    };
   },
   methods: {
     accordion(event) {

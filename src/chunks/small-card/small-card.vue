@@ -3,23 +3,44 @@
 
     <div class="small-img__wrap">
       <div class="overlay"></div>
-      <img src="@/assets/images/Featured/Small_img/img-1.jpg" alt="woman in yellow sports suit"
+      <img :src="data.image ? data.image[0] : ''" alt="woman in yellow sports suit"
         class="small-card__img">
     </div>
 
     <div class="small-card__info">
 
-      <h3 class="small-card__date">10/10/2020</h3>
+      <time
+      class="small-card__date"
+      :datetime="data.publishDate"
+      >
+      {{ data.publishDate | formatDate }}
+      </time>
 
       <a href="#" class="small-card__link">Lifestyle</a>
 
+      <!-- <router-link :to="'/'">
+        {{ $t(`label.${_getTag(data.categs)}`) }}
+      </router-link> -->
+
       <p class="small-card__title">
-        At vero eos et accusamus et iusto
+        {{ data.title }}
       </p>
+
+       <!-- <div class="cms" v-html="data.intro"></div>
+
+        <router-link :to="'/blog/' + data.slug">{{
+          $t("global.article-more")
+        }}</router-link> -->
 
     </div>
   </li>
 </template>
+
+<script>
+export default {
+  props: ['id', 'data'],
+};
+</script>
 
 <style lang="scss" scoped>
   @import './small-card.scss';

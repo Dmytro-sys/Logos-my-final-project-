@@ -1,12 +1,14 @@
 <template>
   <div class="home">
-    <MainArticle />
+    <MainArticle/>
     <OurServices />
-    <FeaturedArticles />
+    <FeaturedArticles v-if="isLoaded"
+    :tag="featuredSmallArticles"
+    :tags="featuredLargeArticles" />
     <Clients />
-    <Issue />
-    <Interviews />
-    <News />
+    <Issue v-if="isLoaded" :tag="issueArticles"  />
+    <Interviews v-if="isLoaded" :tag="interviewsArticles" />
+    <News v-if="isLoaded" :tag="newsArticles"/>
     <Accordion />
   </div>
 </template>
@@ -21,9 +23,15 @@ import Issue from '@/components/issue-section/Issue.vue';
 import News from '@/components/news-section/News.vue';
 import Interviews from '@/components/interviews-section/Interviews.vue';
 import Accordion from '@/components/accordion/Accordion.vue';
+import { mapMutations, mapGetters } from 'vuex';
 
 export default {
   name: 'Home',
+  data() {
+    return {
+      isLoaded: false,
+    };
+  },
   components: {
     MainArticle,
     OurServices,
@@ -34,6 +42,27 @@ export default {
     Interviews,
     Accordion,
   },
+  methods: {
+    ...mapMutations([
+      'SET_FEATUREDARTICLES',
+    ]),
+
+  },
+  created() {
+    this.$store.dispatch('blog/getFeatured').then(() => {
+      this.isLoaded = true;
+    });
+    this.$store.dispatch('blog/getIssue');
+    this.$store.dispatch('blog/getNews');
+    this.$store.dispatch('blog/getinterviews');
+  },
+  computed: mapGetters('blog', [
+    'newsArticles',
+    'interviewsArticles',
+    'featuredSmallArticles',
+    'issueArticles',
+    'featuredLargeArticles',
+  ]),
 };
 
 </script>

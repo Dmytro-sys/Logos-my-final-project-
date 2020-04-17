@@ -12,9 +12,11 @@
 
               <ul class="small-card__list">
 
-                <v-small-card></v-small-card>
-                <v-small-card></v-small-card>
-                <v-small-card></v-small-card>
+                <v-small-card
+                :key="article.id"
+                v-for="article in tag"
+                v-bind="article"
+                ></v-small-card>
 
               </ul>
 
@@ -31,6 +33,21 @@
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['tag'],
+  // computed: {
+  //   articlesByTag() {
+  //     const articles = this.$store.state.blog.articleHome[
+  //       this.tag.data.category
+  //     ];
+  //     if (this.ignoreFirst) return articles.splice(1);
+  //     return articles;
+  //   }
+  // },
+};
+</script>
 
 <style lang="scss" scoped>
   @import './News.scss';

@@ -11,10 +11,9 @@ export default {
     },
   },
   actions: {
-    getServices({
-      commit,
-    }) {
-      return http.get('/app/suffix-blog/content/service').then(
+    getServices({ state, commit }) {
+      if (state.services.length) return Promise.resolve();
+      return http.get('/api/content/suffix-blog/service/').then(
         (r) => {
           commit('get_services', r.data.items);
         },
@@ -27,4 +26,3 @@ export default {
 
   getters: {},
 };
-/* eslint-disable */

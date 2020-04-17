@@ -1,16 +1,20 @@
 <template>
   <div class="services__item">
     <div class="services__icon-wrap">
-      <img class="services__icon" :src="icon" alt="">
+      <img class="services__icon" :src="image" alt="">
     </div>
-    <h4 class="services__title">{{ title }}</h4>
-    <p class="services__text">{{ content }}</p>
+    <h4 class="services__title">{{ serviceTitle }}</h4>
+    <p class="services__text">{{ serviceDescription }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['title', 'content', 'icon'],
+  props: [
+    'service-title',
+    'service-description',
+    'image',
+  ],
 };
 </script>
 

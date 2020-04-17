@@ -4,6 +4,7 @@ import store from '@/store';
 
 import Home from '@/views/Home.vue';
 import loginRoute from '@/views/Login.vue';
+import getGlobalData from '@/js/plugins/initial';
 
 Vue.use(VueRouter);
 
@@ -43,6 +44,8 @@ const router = new VueRouter({
 });
 /* eslint-disable */
 router.beforeEach(async (to, from, next) => {
+  await getGlobalData();
+
   if (
     to.matched.some((record) => record.meta.notProtected)
     || store.getters['auth/isLogin']

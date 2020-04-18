@@ -1,12 +1,12 @@
 <template>
   <div class="home">
-    <MainArticle/>
+    <MainArticle v-if="isLoaded" />
     <OurServices />
     <FeaturedArticles v-if="isLoaded"
     :tag="featuredSmallArticles"
     :tags="featuredLargeArticles" />
     <Clients />
-    <Issue v-if="isLoaded" :tag="issueArticles"  />
+    <Issue v-if="isLoaded" />
     <Interviews v-if="isLoaded" :tag="interviewsArticles" />
     <News v-if="isLoaded" :tag="newsArticles"/>
     <Accordion />
@@ -44,23 +44,23 @@ export default {
   },
   methods: {
     ...mapMutations([
-      'SET_FEATUREDARTICLES',
+      'SET_LOADED',
     ]),
-
   },
   created() {
     this.$store.dispatch('blog/getFeatured').then(() => {
       this.isLoaded = true;
     });
-    this.$store.dispatch('blog/getIssue');
     this.$store.dispatch('blog/getNews');
+    this.$store.dispatch('blog/getIssue').then(() => {
+      this.isLoaded = true;
+    });
     this.$store.dispatch('blog/getinterviews');
   },
   computed: mapGetters('blog', [
     'newsArticles',
     'interviewsArticles',
     'featuredSmallArticles',
-    'issueArticles',
     'featuredLargeArticles',
   ]),
 };

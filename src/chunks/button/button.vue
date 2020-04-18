@@ -10,7 +10,6 @@
 
 <style lang="scss" scoped>
   @import './button.scss';
-
 </style>
 
 <script>

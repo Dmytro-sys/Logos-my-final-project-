@@ -9,31 +9,31 @@
 
     <div class="large-card__info">
 
-      <time
-      class="large-card__date"
-      :datetime="data.publishDate"
-      >
-      {{ data.publishDate | formatDate }}
-      </time>
+      <div class="large-card__sub-info">
+        <time
+        class="large-card__date"
+        :datetime="data.publishDate"
+        >
+        {{ data.publishDate | formatDate }}
+        </time>
 
-      <a href="#" class="large-card__link">Lifestyle</a>
+        <router-link
+        class="large-card__link"
+        :to="'/'">
+        {{ getTag(data.ref) }}
+        </router-link>
 
-       <!-- <router-link :to="'/'">
-        {{ $t(`label.${_getTag(data.categs)}`) }}
-      </router-link> -->
+      </div>
 
       <h3 class="large-card__title">
         {{ data.title }}
       </h3>
       <p class="large-card__subtitle">
         {{ data.intro }}
+        <router-link
+        :to="'/blog/' + data.slug"
+        >Read more</router-link>
       </p>
-
-      <!-- <div class="cms" v-html="data.intro"></div>
-
-        <router-link :to="'/blog/' + data.slug">{{
-          $t("global.article-more")
-        }}</router-link> -->
 
     </div>
 

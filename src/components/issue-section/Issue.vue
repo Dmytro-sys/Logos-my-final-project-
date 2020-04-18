@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="issues">
+    <section class="issues" v-if="issueArticles">
       <div class="container">
         <div class="issues__wrap">
 
@@ -8,16 +8,21 @@
 
           <div class="issues__baner">
 
-            <img class="issues__baner-img" src="@/assets/images/Issue_1.jpg"
-              alt="A book and coffee on a bad">
+            <img class="issues__baner-img"
+            :src="issueArticles.data.image ? issueArticles.data.image[0] : ''"
+            alt="">
 
           </div>
 
           <div class="issues__info">
 
-            <div class="issues__info-title">ISSUE 22 - MAY 2020</div>
+            <div class="issues__info-title"
+            >{{issueArticles.data.title}}</div>
 
-            <my-button type="issue">Subscribe now</my-button>
+            <router-link
+            class="button issue"
+            :to="'/blog/' + issueArticles.data.slug"
+            >Read more</router-link>
 
           </div>
 
@@ -27,7 +32,16 @@
   </div>
 </template>
 
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+  computed: {
+    ...mapGetters('blog', ['issueArticles']),
+  },
+};
+</script>
+
 <style lang="scss" scoped>
   @import './Issue.scss';
-
 </style>

@@ -24,6 +24,10 @@
                 <my-button>See all</my-button>
               </div>
 
+              <!-- <router-link :to="'/blog/' + data.slug">{{
+          $t("global.article-more")
+        }}</router-link> -->
+
             </div> <!-- end small-card__wrap -->
 
           </div> <!-- end news__small-card -->

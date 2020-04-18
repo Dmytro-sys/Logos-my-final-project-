@@ -39,9 +39,10 @@ img {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .8s ease;
+  transition: all .5s ease;
 }
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+  height: 0;
 }

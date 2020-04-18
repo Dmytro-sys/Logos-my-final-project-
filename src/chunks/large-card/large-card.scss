@@ -36,13 +36,20 @@
     justify-content: space-between;
   }
 
+  &__sub-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-top: 30px;
+  }
+
   &__date {
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
     letter-spacing: 6px;
     color: var(--brand-color);
-    padding-top: 26px;
   }
 
   &__link {
@@ -52,7 +59,6 @@
     text-decoration-line: underline;
     text-transform: uppercase;
     color: var(--brand-color);
-    padding-top: 29px;
   }
 
   &__title {

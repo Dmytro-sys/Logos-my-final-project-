@@ -1,4 +1,4 @@
-.baner {
+.article {
   position: relative;
   width: 100%;
 
@@ -58,7 +58,7 @@
     padding: 5px 10px;
     transition: var(--trans-global);
   }
-  
+
   &__info-link:hover {
     color: var(--brand-color);
     background-color: var(--text-white);
@@ -78,77 +78,20 @@
 
   &__info-subtitle-text {
     font-weight: 300;
-    font-size: 14px;
-    line-height: 21px;
+    font-size: 16px;
+    line-height: 24px;
     color: var(--text-white);
     padding-top: 30px;
   }
 
-  &__info-button {
-    padding-top: 55px;
-  }
-}
+  &__content {
+    margin-top: 60px;
+    padding: 0 110px;
 
-.button {
-  display: inline-block;
-  color: var(--text-white);
-  background-color: transparent;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
-  text-align: center;
-  text-decoration: none;
-  padding: 10px 88px;
-  text-transform: uppercase;
-  border: 1px solid #FFFFFF;
-  outline: 1px solid transparent;
-  cursor: pointer;
-  transition: var(--trans-button);
-
-  &.main {
-    font-size: 12px;
-    line-height: 18px;
-    padding: 20px 65px;
-    background: transparent;
-    transition: var(--trans-button);
-
-    .no-touchevents &:hover {
-      box-shadow: inset 0 0 0 3em var(--text-white);
-      color: var(--brand-color);
-    }
-
-    &[disabled]:hover {
-      color: rgb(163, 159, 159);
-      background-color:  rgb(92, 89, 89);
-      box-shadow: none;
-    }
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--text-black);
   }
 
-  .no-touchevents &:hover {
-    box-shadow: inset 0 0 0 3em rgba(255, 255, 255, 0.794);
-    color: rgba(0, 0, 0, 0.794);
-  }
-
-  &:focus {
-    outline: 2px solid rgb(100, 100, 250);
-    border: 1px solid transparent;
-  }
-
-  &:active {
-    transform: scale(0.9);
-    outline: 1px solid transparent;
-  }
-  
-  &[disabled] {
-    cursor: not-allowed;
-    color: rgb(163, 159, 159);
-    background-color:  rgb(92, 89, 89);
-    border: 1px solid transparent;
-  }
-
-  &[disabled]:hover {
-    color: rgb(163, 159, 159);
-    background-color:  rgb(92, 89, 89);
-    box-shadow: none;
-  }
 }

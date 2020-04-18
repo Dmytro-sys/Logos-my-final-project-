@@ -10,6 +10,7 @@ import LargeCard from '@/chunks/large-card/large-card.vue';
 import SmallCard from '@/chunks/small-card/small-card.vue';
 import Button from '@/chunks/button/button.vue';
 import moment from 'moment';
+import getCategoryName from '@/js/global-mixin';
 
 Vue.component('v-service-card', ServiceCard);
 Vue.component('v-large-card', LargeCard);
@@ -21,8 +22,8 @@ Vue.component('my-button', Button);
  * Mixins
  * -------------------------------
  */
-// import { mixin } from '@/global-mixin';
-// Vue.mixin(mixin);
+
+Vue.mixin(getCategoryName);
 
 /**
  * -------------------------------

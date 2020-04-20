@@ -66,11 +66,6 @@ export default {
   //   // console.log(to);
   //   // }
   // },
-  beforeRouteUpdate(to, from, next) {
-    console.log(from);
-    console.log(to);
-    next();
-  },
   methods: {
     ...mapActions('blog', ['getArticlesByTag']),
     // setTag(tagId) {

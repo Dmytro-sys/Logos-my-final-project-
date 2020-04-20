@@ -6,11 +6,21 @@
     width: 100%;
     margin: 0 auto;
     display: flex;
+
+    @include respond-below(sm) {
+      flex-direction: column;
+    }
   }
 
   &__image-wrap {
     width: 50%;
     position: relative;
+
+    @include respond-below(sm) {
+      display: block;
+      width: 100%;
+      position: relative;
+    }
   }
 
   &__img {
@@ -23,6 +33,10 @@
     bottom: 0;
     right: 0;
     z-index: 10;
+
+    @include respond-below(sm) {
+      position: relative;
+    }
   }
 
   &__info {
@@ -31,12 +45,31 @@
     position: relative;
     z-index: 10;
     background-color: var(--brand-color);
+
+    @include respond-below(lg) {
+      padding: 125px 105px;
+    }
+
+    @include respond-below(md) {
+      padding: 72px 20px;
+    }
+
+    @include respond-below(sm) {
+      width: 100%;
+      padding: 15px 10px;
+    }
   }
 
   &__info-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include respond-below(sm) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   &__info-date {
@@ -45,6 +78,18 @@
     line-height: 21px;
     letter-spacing: 7px;
     color: var(--text-white);
+
+    @include respond-below(md) {
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 6px;
+    }
+
+    @include respond-below(sm) {
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 6px;
+    }
   }
 
   &__info-link {
@@ -57,8 +102,16 @@
     color: var(--text-white);
     padding: 5px 10px;
     transition: var(--trans-global);
+
+    @include respond-below(md) {
+      display: none;
+    }
+
+    @include respond-below(sm) {
+      display: none;
+    }
   }
-  
+
   &__info-link:hover {
     color: var(--brand-color);
     background-color: var(--text-white);
@@ -74,6 +127,22 @@
     text-transform: uppercase;
     color: var(--text-white);
     padding-top: 65px;
+
+    @include respond-below(lg) {
+      padding-top: 35px;
+    }
+
+    @include respond-below(md) {
+      font-size: 18px;
+      line-height: 27px;
+      padding-top: 20px;
+    }
+
+    @include respond-below(sm) {
+      font-size: 18px;
+      line-height: 27px;
+      padding-top: 20px;
+    }
   }
 
   &__info-subtitle-text {
@@ -82,10 +151,40 @@
     line-height: 21px;
     color: var(--text-white);
     padding-top: 30px;
+
+    @include respond-below(lg) {
+      padding-top: 20px;
+    }
+
+    @include respond-below(md) {
+      font-size: 12px;
+      line-height: 18px;
+      padding-top: 20px;
+    }
+
+    @include respond-below(sm) {
+      font-size: 12px;
+      line-height: 18px;
+      padding-top: 20px;
+    }
   }
 
   &__info-button {
     padding-top: 55px;
+
+    @include respond-below(lg) {
+      padding-top: 35px;
+    }
+
+    @include respond-below(md) {
+      padding-top: 30px;
+    }
+
+    @include respond-below(sm) {
+      padding: 20px 0;
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 
@@ -105,13 +204,25 @@
   cursor: pointer;
   transition: var(--trans-button);
 
+  @include respond-below(md) {
+    padding: 10px 65px;
+  }
+
+  @include respond-below(sm) {
+    padding: 10px 65px;
+    display: block;
+  }
+
   &.main {
     font-size: 12px;
     line-height: 18px;
     padding: 20px 65px;
     background: transparent;
     transition: var(--trans-button);
-
+    
+    @include respond-below(sm) {
+      padding: 10px 50px;
+    }
     .no-touchevents &:hover {
       box-shadow: inset 0 0 0 3em var(--text-white);
       color: var(--brand-color);
@@ -119,7 +230,7 @@
 
     &[disabled]:hover {
       color: rgb(163, 159, 159);
-      background-color:  rgb(92, 89, 89);
+      background-color: rgb(92, 89, 89);
       box-shadow: none;
     }
   }
@@ -138,17 +249,17 @@
     transform: scale(0.9);
     outline: 1px solid transparent;
   }
-  
+
   &[disabled] {
     cursor: not-allowed;
     color: rgb(163, 159, 159);
-    background-color:  rgb(92, 89, 89);
+    background-color: rgb(92, 89, 89);
     border: 1px solid transparent;
   }
 
   &[disabled]:hover {
     color: rgb(163, 159, 159);
-    background-color:  rgb(92, 89, 89);
+    background-color: rgb(92, 89, 89);
     box-shadow: none;
   }
 }

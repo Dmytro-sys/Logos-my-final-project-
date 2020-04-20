@@ -1,7 +1,17 @@
 .services {
   &__wrap {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 100px;
+
+    @include respond-below(sm) {
+      margin-top: 75px;
+    }
+
+    @include respond-below(xs) {
+      justify-content: center;
+      margin-top: 50px;
+    }
   }
 }

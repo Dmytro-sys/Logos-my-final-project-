@@ -52,6 +52,12 @@
             inventore nostrum! Voluptas quas quae velit tempore. Dolores voluptas a quas voluptatem?
           </p>
 
+          <router-link
+          class='button go__back'
+          :to="'/'">
+          Home
+          </router-link>
+
         </div>
 
       </div><!-- end container -->

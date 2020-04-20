@@ -69,9 +69,6 @@ export default {
     };
   },
   methods: {
-    go() {
-      // this.$router.replace("/blog");
-    },
     toogleActive() {
       this.active = !this.active;
     },

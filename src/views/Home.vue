@@ -1,15 +1,18 @@
 <template>
   <div class="home">
-    <MainArticle v-if="isLoaded" />
+    <Loader v-if="loading" />
+  <div v-else>
+    <MainArticle />
     <OurServices />
-    <FeaturedArticles v-if="isLoaded"
+    <FeaturedArticles
     :tag="featuredSmallArticles"
     :tags="featuredLargeArticles" />
     <Clients />
-    <Issue v-if="isLoaded" />
-    <Interviews v-if="isLoaded" :tag="interviewsArticles" />
-    <News v-if="isLoaded" :tag="newsArticles"/>
+    <Issue />
+    <Interviews :tag="interviewsArticles" />
+    <News :tag="newsArticles" />
     <Accordion />
+  </div>
   </div>
 </template>
 
@@ -23,13 +26,14 @@ import Issue from '@/components/issue-section/Issue.vue';
 import News from '@/components/news-section/News.vue';
 import Interviews from '@/components/interviews-section/Interviews.vue';
 import Accordion from '@/components/accordion/Accordion.vue';
+import Loader from '@/chunks/loader/Loader.vue';
 import { mapMutations, mapGetters } from 'vuex';
 
 export default {
   name: 'Home',
   data() {
     return {
-      isLoaded: false,
+      loading: true,
     };
   },
   components: {
@@ -41,6 +45,7 @@ export default {
     News,
     Interviews,
     Accordion,
+    Loader,
   },
   methods: {
     ...mapMutations([
@@ -49,13 +54,14 @@ export default {
   },
   created() {
     this.$store.dispatch('blog/getFeatured').then(() => {
-      this.isLoaded = true;
+      this.$store.dispatch('blog/getNews').then(() => {
+        this.$store.dispatch('blog/getIssue').then(() => {
+          this.$store.dispatch('blog/getinterviews').then(() => {
+            this.loading = false;
+          });
+        });
+      });
     });
-    this.$store.dispatch('blog/getNews');
-    this.$store.dispatch('blog/getIssue').then(() => {
-      this.isLoaded = true;
-    });
-    this.$store.dispatch('blog/getinterviews');
   },
   computed: mapGetters('blog', [
     'newsArticles',

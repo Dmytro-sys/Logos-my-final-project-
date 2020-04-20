@@ -6,6 +6,10 @@
   }
   &__logo {
     padding: 45px 0;
+
+    @include respond-below(md) {
+      padding: 20px 0;
+    }
   }
 }
 
@@ -19,6 +23,10 @@
     left: 50px;
     top: 50%;
     transform: translateY(-50%);
+
+    @include respond-below(xs) {
+      left: 20px;
+    }
   }
   &__menu-lines {
     position: absolute;
@@ -84,6 +92,13 @@
   &__list {
     list-style: none;
     padding: 55px 65px;
+
+    @include respond-below(xs) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 25px;
+    }
   }
   &__item {
     margin-bottom: 15px;
@@ -97,6 +112,10 @@
 
     &:last-child {
       margin-bottom: 0;
+    }
+
+    @include respond-below(xs) {
+      margin: 0;
     }
   }
   &__link {

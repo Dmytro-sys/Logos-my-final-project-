@@ -1,4 +1,9 @@
 .feautured {
+  &__wrap {
+    @include respond-below(xs) {
+      padding-top: 60px;
+    } 
+  }
 
   &__title {
     font-weight: 500;
@@ -6,10 +11,29 @@
     line-height: 27px;
     text-transform: uppercase;
     color: var(--title-color);
+
+    @include respond-below(md) {}
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {
+      display: none;
+    }
   }
 
   &__large-cards {
     padding-top: 30px;
+    
+    @include respond-below(md) {
+      padding-top: 20px;
+    }
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {
+      padding-top: 0px;
+    }
+    
   }
 
 }
@@ -18,6 +42,15 @@
   list-style: none;
   display: flex;
   justify-content: space-between;
+  
+  @include respond-below(md) {}
+
+  @include respond-below(sm) {}
+
+  @include respond-below(xs) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* start feautured__small-card */
@@ -25,17 +58,33 @@
 .small-card {
   &__wrap {
     padding-top: 60px;
+    text-align: center;
+    
+    @include respond-below(md) {
+      padding-top: 35px;
+    }
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {
+      padding-top: 30px;
+      overflow: auto;
+      text-align: center;
+    }
   }
 
   &__list {
     list-style: none;
     display: flex;
     justify-content: space-between;
+    
+    @include respond-below(md) {}
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {
+      min-width: 720px;
+    }
   }
   
-}
-
-.btn__wrap {
-  text-align: center;
-  padding-top: 60px;
 }

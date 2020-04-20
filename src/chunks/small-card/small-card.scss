@@ -1,12 +1,23 @@
 .small-card {
   &__item {
-    max-width: 363px;
-    width: 100%;
+    width: 33.33333%;
     margin-right: 27px;
+
+    @include respond-below(md) {}
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {}
   }
 
   &__item:nth-child(3n) {
     margin-right: 0;
+
+    @include respond-below(md) {}
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {}
   }
 
   &__img-wrap {
@@ -15,6 +26,12 @@
     height: auto;
     position: relative;
     padding-top: 66.12%;
+
+    @include respond-below(md) {}
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {}
   }
 
   &__img {
@@ -27,6 +44,12 @@
     left: 0;
     right: 0;
     z-index: 10;
+
+    @include respond-below(md) {}
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {}
   }
 
   &__info {
@@ -35,6 +58,11 @@
     flex-wrap: wrap;
     padding-top: 18px;
     text-align: left;
+
+    @include respond-below(md) {
+      padding-top: 21px;
+    }
+
   }
 
   &__sub-info {
@@ -42,22 +70,47 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+
+    @include respond-below(md) {}
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {}
   }
 
-  &__date,&__link {
+  &__date,
+  &__link {
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
+
+    @include respond-below(md) {}
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {}
   }
 
   &__date {
     letter-spacing: 6px;
     color: var(--text-black);
+
+    @include respond-below(md) {}
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {}
   }
 
   &__link {
     text-transform: uppercase;
     color: var(--brand-color);
+
+    @include respond-below(md) {}
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {}
   }
 
   &__title {
@@ -67,6 +120,13 @@
     line-height: 27px;
     text-transform: uppercase;
     color: var(--title-color);
+
+    @include respond-below(md) {
+      padding-top: 15px;
+      font-size: 14px;
+      line-height: 21px;
+    }
+
   }
 
   &__link-to-page {
@@ -74,6 +134,15 @@
     font-size: 18px;
     line-height: 27px;
     text-transform: none;
+
+    @include respond-below(md) {
+      font-size: 14px;
+      line-height: 21px;
+    }
+
+    @include respond-below(sm) {}
+
+    @include respond-below(xs) {}
   }
- 
-  }
+
+}

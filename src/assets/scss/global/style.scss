@@ -46,3 +46,98 @@ img {
   opacity: 0;
   height: 0;
 }
+
+.button {
+  color: var(--text-white);
+  background-color: var(--button-bg-color);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  padding: 10px 88px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #FFFFFF;
+  outline: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--trans-button);
+
+  &.main {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 20px 65px;
+    background: transparent;
+    transition: var(--trans-button);
+
+    .no-touchevents &:hover {
+      box-shadow: inset 0 0 0 3em var(--text-white);
+      color: var(--brand-color);
+    }
+
+    &[disabled]:hover {
+      color: rgb(163, 159, 159);
+      background-color:  rgb(92, 89, 89);
+      box-shadow: none;
+    }
+  }
+
+  &.issue {
+    background-color: transparent;
+    padding: 10px 46px;
+    margin-top: 20px;
+    transition: var(--trans-button);
+
+    .no-touchevents &:hover {
+      box-shadow: inset 0 0 0 3em var(--text-white);
+      color: var(--brand-color);
+    }
+
+    &[disabled]:hover {
+      color: rgb(163, 159, 159);
+      background-color:  rgb(92, 89, 89);
+      box-shadow: none;
+    }
+  }
+
+  .no-touchevents &:hover {
+    box-shadow: inset 0 0 0 3em rgba(255, 255, 255, 0.794);
+    color: rgba(0, 0, 0, 0.794);
+  }
+
+  &:focus {
+    outline: 2px solid rgb(100, 100, 250);
+    border: 1px solid transparent;
+  }
+
+  &:active {
+    transform: scale(0.9);
+    outline: 1px solid transparent;
+  }
+  
+  &[disabled] {
+    cursor: not-allowed;
+    color: rgb(163, 159, 159);
+    background-color:  rgb(92, 89, 89);
+    border: 1px solid transparent;
+  }
+
+  &[disabled]:hover {
+    color: rgb(163, 159, 159);
+    background-color:  rgb(92, 89, 89);
+    box-shadow: none;
+  }
+
+  &.go__back {
+    display: inline-block;
+    padding: 10px 40px;
+    text-decoration: none;
+    margin-top: 40px;
+  }
+
+  &.see__all {
+    display: inline-block;
+    padding: 10px 85px;
+    text-decoration: none;
+    margin-top: 60px;
+  }
+}

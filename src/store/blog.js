@@ -1,13 +1,16 @@
 import { http } from '@/js/plugins/http';
 
 const mutt = {
-  // SET_ARTICLES: 'SET_ARTICLES',
   SET_TAGS: 'SET_TAGS',
   SET_LOADED: 'SET_LOADED',
+  SET_NEWSLOADED: 'SET_NEWSLOADED',
+  SET_ISSUELOADED: 'SET_ISSUELOADED',
+  SET_INTERVIEWSLOADED: 'SET_INTERVIEWSLOADED',
   SET_FEATUREDARTICLES: 'SET_FEATUREDARTICLES',
   SET_ISSUEARTICLES: ' SET_ISSUEARTICLES',
   SET_NEWSARTICLES: 'SET_NEWSARTICLES',
   SET_INTERVIEWSARTICLES: 'SET_INTERVIEWSARTICLES',
+  SET_FILT_ARTICLES: 'SET_FILT_ARTICLES',
   SET_SINGLE_ARCTICLE: 'SET_SINGLE_ARCTICLE',
   DEL_SINGLE_ARCTICLE: 'DEL_SINGLE_ARCTICLE',
 };
@@ -21,15 +24,15 @@ export default {
     issueArticles: [],
     newsArticles: [],
     interviewsArticles: [],
-    // articles: [],
+    filteredArticles: [],
     tags: [],
     singleArticle: null,
     loaded: false,
+    newsloaded: false,
+    issueloaded: false,
+    interviewsloaded: false,
   },
   mutations: {
-    // [mutt.SET_ARTICLES](state, articles) {
-    //   state.articles = articles;
-    // },
     [mutt.SET_FEATUREDARTICLES](state, featuredArticles) {
       state.featuredArticles = featuredArticles;
     },
@@ -47,6 +50,18 @@ export default {
     },
     [mutt.SET_LOADED](state) {
       state.loaded = true;
+    },
+    [mutt.SET_ISSUELOADED](state) {
+      state.issueloaded = true;
+    },
+    [mutt.SET_INTERVIEWSLOADED](state) {
+      state.interviewsloaded = true;
+    },
+    [mutt.SET_NEWSLOADED](state) {
+      state.newsloaded = true;
+    },
+    [mutt.SET_FILT_ARTICLES](state, filteredArticles) {
+      state.filteredArticles = filteredArticles;
     },
     [mutt.DEL_SINGLE_ARCTICLE](state) {
       state.singleArticle = null;
@@ -71,30 +86,11 @@ export default {
         );
       });
     },
-    // getArticles({ commit, state, dispatch }) {
-    //   if (state.loaded) return;
+    getFeatured({ state, commit }) {
+      if (state.loaded) return Promise.resolve();
+      commit(mutt.SET_LOADED);
 
-    //   commit(mutt.SET_LOADED);
-    //   return Promise.all([
-    //     new Promise((resolve, reject) => {
-    //       http.get('/api/content/suffix-blog/articles/').then(
-    //         r => {
-    //           commit(mutt.SET_ARTICLES, r.data.items);
-    //           resolve(r.data);
-    //         },
-    //         ({
-    //           response
-    //         }) => {
-    //           reject(response.data);
-    //         }
-    //       );
-    //     }),
-    //     dispatch('getTags')
-    //   ]);
-    // },
-    getFeatured({ commit }) {
       const tag = 'c354a6d4-03bd-40ba-875d-0c7c6b814bbd';
-      // state.tags.find(tag => tag.id == 'c354a6d4-03bd-40ba-875d-0c7c6b814bbd');
       const objectWithSettings = {
         params: {
           $filter: `data/ref/iv eq '${tag}'`,
@@ -115,7 +111,9 @@ export default {
         })),
       ]);
     },
-    getIssue({ commit }) {
+    getIssue({ state, commit }) {
+      if (state.issueloaded) return Promise.resolve();
+      commit(mutt.SET_ISSUELOADED);
       const tag = '6c3bd1fa-0e44-4593-ba77-1abfee35363d';
       const objectWithSettings = {
         params: {
@@ -137,7 +135,9 @@ export default {
         })),
       ]);
     },
-    getNews({ commit }) {
+    getNews({ state, commit }) {
+      if (state.newsloaded) return Promise.resolve();
+      commit(mutt.SET_NEWSLOADED);
       const tag = '142d92a5-16ef-4281-b486-0d51f963f8bf';
       const objectWithSettings = {
         params: {
@@ -159,7 +159,9 @@ export default {
         })),
       ]);
     },
-    getinterviews({ commit }) {
+    getinterviews({ state, commit }) {
+      if (state.interviewsloaded) return Promise.resolve();
+      commit(mutt.SET_INTERVIEWSLOADED);
       const tag = '4b69a3b9-c383-4225-8484-e7d87642b9f9';
       const objectWithSettings = {
         params: {
@@ -202,6 +204,28 @@ export default {
             },
           );
       });
+    },
+    getArticlesByTag({ commit }, tagId) {
+      const objectWithSettings = tagId
+        ? {
+          params: {
+            $filter: `data/ref/iv eq '${tagId}'`,
+          },
+        }
+        : null;
+      return Promise.all([
+        (new Promise((resolve, reject) => {
+          http.get('/api/content/suffix-blog/articles/', objectWithSettings).then(
+            (r) => {
+              commit(mutt.SET_FILT_ARTICLES, r.data.items);
+              resolve(r.data);
+            },
+            ({ response }) => {
+              reject(response.data);
+            },
+          );
+        })),
+      ]);
     },
   },
   getters: {

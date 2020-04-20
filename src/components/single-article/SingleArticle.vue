@@ -45,9 +45,19 @@
         </div>
 
       </div> <!-- end article__wrap -->
+
+      <div class="article__main-content">
+
         <div class="article__content"
         v-html="singleArticle.content"
         >
+        </div>
+        <router-link
+          class='button go__back'
+          :to="'/'">
+          Home
+        </router-link>
+
       </div>
 
     </section>

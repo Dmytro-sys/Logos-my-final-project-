@@ -1,38 +1,81 @@
 .services {
-  
-    &__item {
-      width: 33.33333%;
-      padding: 0 55px 80px 20px;
+
+  &__item {
+    max-width: 320px;
+    margin-bottom: 80px;
+
+    &:nth-child(3n) {
+      margin-bottom: 0;
     }
-  
-    &__icon-wrap {
-      position: relative;
-      width: 72px;
-      height: 72px;
+
+    @include respond-below(md) {
+      max-width: 260px;
     }
-  
-    &__icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate3d(- 50%, - 50%, 0);
-    }
-  
-    &__title {
-      margin-top: 20px;
-  
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 27px;
-      color: var(--title-color);
-    }
-  
-    &__text {
-      margin-top: 27px;
-  
-      font-weight: normal;
-      font-size: 16px;
-      line-height: 26px;
-      color: var(--text-black);
+
+    @include respond-below(xs) {
+      max-width: 100%;
+      margin-bottom: 30px;
     }
   }
+
+  &__icon-wrap {
+    position: relative;
+    width: 72px;
+    height: 72px;
+
+    @include respond-below(md) {
+      width: 65px;
+      height: 65px;
+    }
+
+    @include respond-below(xs) {
+      width: 100%;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(- 50%, - 50%, 0);
+  }
+
+  &__title {
+    margin-top: 20px;
+
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    color: var(--title-color);
+
+    @include respond-below(md) {
+      font-size: 16px;
+      line-height: 26px;
+      margin-top: 15px;
+    }
+
+    @include respond-below(xs) {
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+
+  &__text {
+    margin-top: 27px;
+
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--text-black);
+
+    @include respond-below(md) {
+      font-size: 14px;
+      line-height: 21px;
+      margin-top: 20px;
+    }
+
+    @include respond-below(xs) {
+      margin-top: 15px;
+    }
+  }
+}

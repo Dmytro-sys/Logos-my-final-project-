@@ -15,13 +15,14 @@
 
 }
 
+.small-card__wrap--news {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .small-card__list {
   list-style: none;
   display: flex;
   justify-content: space-between;
-}
-
-.btn__wrap {
-  text-align: center;
-  padding-top: 60px;
 }

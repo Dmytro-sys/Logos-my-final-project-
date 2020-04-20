@@ -5,6 +5,11 @@
     width: 100%;
     margin-right: 20px;
 
+    @include respond-below(xs) {
+      padding-top: 25px;
+      margin-right: 0px;
+    }
+
     &:nth-child(even) {
       margin-right: 0;
     }
@@ -34,6 +39,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+
+    @include respond-below(xs) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
   }
 
   &__sub-info {
@@ -50,15 +61,31 @@
     line-height: 18px;
     letter-spacing: 6px;
     color: var(--brand-color);
+
+    @include respond-below(md) {
+      padding-top: 20px;
+    }
+
+    @include respond-below(xs) {
+      font-size: 12px;
+      line-height: 18px;
+      letter-spacing: 6px;
+      padding-top: 15px;
+    }
   }
 
   &__link {
+    display: block;
     font-weight: 500;
     font-size: 12px;
     line-height: 18px;
     text-decoration-line: underline;
     text-transform: uppercase;
     color: var(--brand-color);
+
+    @include respond-below(xs) {
+      display: none;
+    }
   }
 
   &__title {
@@ -67,6 +94,18 @@
     line-height: 36px;
     color: var(--title-color);
     padding-top: 31px;
+
+    @include respond-below(md) {
+      font-size: 18px;
+      line-height: 27px;
+      padding-top: 15px;
+    }
+
+    @include respond-below(xs) {
+      font-size: 18px;
+      line-height: 27px;
+      padding-top: 15px;
+    }
   }
 
   &__subtitle {
@@ -75,6 +114,17 @@
     line-height: 27px;
     color: var(--text-black);
     padding-top: 20px;
-  }
 
+    @include respond-below(md) {
+      font-size: 14px;
+      line-height: 21px;
+      padding-top: 20px;
+    }
+
+    @include respond-below(xs) {
+      font-size: 14px;
+      line-height: 21px;
+      padding-top: 20px;
+    }
+  }
 }

@@ -20,13 +20,12 @@
 
               </ul>
 
-              <div class="btn__wrap">
-                <my-button>See all</my-button>
-              </div>
-
-              <!-- <router-link :to="'/blog/' + data.slug">{{
-          $t("global.article-more")
-        }}</router-link> -->
+              <router-link
+              class="button see__all"
+              v-bind="tag"
+              :to="'/blog/?tag=interviews'">
+              See all
+              </router-link>
 
           </div> <!-- end interwievs__small-card -->
 

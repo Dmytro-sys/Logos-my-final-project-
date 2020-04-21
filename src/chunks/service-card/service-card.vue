@@ -10,11 +10,11 @@
 
 <script>
 export default {
-  props: [
-    'service-title',
-    'service-description',
-    'image',
-  ],
+  props: {
+    serviceTitle: String,
+    serviceDescription: String,
+    image: Array,
+  },
 };
 </script>
 

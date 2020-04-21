@@ -42,7 +42,10 @@
 
 <script>
 export default {
-  props: ['id', 'data'],
+  props: {
+    id: String,
+    data: Object,
+  },
 };
 </script>
 

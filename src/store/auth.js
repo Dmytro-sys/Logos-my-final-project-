@@ -8,11 +8,11 @@ const mutt = {
 export default {
   namespaced: true,
   state: {
-    token: localStorage.token || null,
+    token: null,
     error: null,
   },
   mutations: {
-    [mutt.SET_TOKEN](state, token = localStorage.token) {
+    [mutt.SET_TOKEN](state, token) {
       state.token = token;
       localStorage.token = token;
       http.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -56,7 +56,7 @@ export default {
   },
   getters: {
     isLogin(state) {
-      return !!state.token && localStorage.token;
+      return !!state.token;
     },
   },
 };

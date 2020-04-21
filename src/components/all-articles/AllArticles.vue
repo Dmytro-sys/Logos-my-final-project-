@@ -60,17 +60,8 @@ export default {
   computed: {
     ...mapState('blog', ['tags', 'filteredArticles']),
   },
-  // watch: {
-  //   // $route(to, from) {
-  //   // console.log(from);
-  //   // console.log(to);
-  //   // }
-  // },
   methods: {
     ...mapActions('blog', ['getArticlesByTag']),
-    // setTag(tagId) {
-    //   this.getArticlesByTag(tagId);
-    // },
   },
   created() {
     this.getArticlesByTag().then(() => {

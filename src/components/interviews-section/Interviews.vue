@@ -39,16 +39,9 @@
 
 <script>
 export default {
-  props: ['tag'],
-  // computed: {
-  //   articlesByTag() {
-  //     const articles = this.$store.state.blog.articleHome[
-  //       this.tag.data.category
-  //     ];
-  //     if (this.ignoreFirst) return articles.splice(1);
-  //     return articles;
-  //   }
-  // },
+  props: {
+    tag: Array,
+  },
 };
 </script>
 

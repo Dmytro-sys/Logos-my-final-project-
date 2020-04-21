@@ -52,7 +52,10 @@
 
 <script>
 export default {
-  props: ['tag', 'tags'],
+  props: {
+    tag: Array,
+    tags: Array,
+  },
 };
 </script>
 

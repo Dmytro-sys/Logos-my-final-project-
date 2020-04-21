@@ -1,10 +1,23 @@
 .accordion {
   &__wrap {
-    margin-top: 80px;;
+    margin-top: 80px;
+
+    @include respond-below(sm) {
+      margin-top: 60px;
+    }
+
   }
-  
+
   &__item {
     margin-bottom: 20px;
+
+    @include respond-below(md) {}
+
+    @include respond-below(sm) {
+      margin-bottom: 15px;
+    }
+
+    @include respond-below(xs) {}
   }
 
   &__item-title {
@@ -17,6 +30,21 @@
     border: 4px solid #000000;
     cursor: pointer;
 
+    @include respond-below(md) {
+      padding: 15px 30px;
+    }
+
+    @include respond-below(sm) {
+      font-size: 16px;
+      line-height: 21px;
+      padding: 10px 30px;
+    }
+
+    @include respond-below(xs) {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
 
     &:after {
       content: ' > ';
@@ -25,6 +53,10 @@
       right: 25px;
       top: 50%;
       transform: rotate(90deg) scaleY(2) translateX(- 100%);
+
+      @include respond-below(sm) {
+        right: 15px;
+      }
     }
 
     &.active {
@@ -58,5 +90,20 @@
     top: 0;
     left: 0;
     transition: all 0.2s ease-in-out;
+
+    @include respond-below(md) {
+      padding: 15px 30px;
+    }
+
+    @include respond-below(sm) {
+      font-size: 16px;
+      line-height: 21px;
+      padding: 10px 30px;
+    }
+
+    @include respond-below(xs) {
+      font-size: 14px;
+      line-height: 18px;
+    }
   }
 }

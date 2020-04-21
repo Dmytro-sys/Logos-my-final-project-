@@ -12,10 +12,6 @@
     text-transform: uppercase;
     color: var(--title-color);
 
-    @include respond-below(md) {}
-
-    @include respond-below(sm) {}
-
     @include respond-below(xs) {
       display: none;
     }
@@ -27,8 +23,6 @@
     @include respond-below(md) {
       padding-top: 20px;
     }
-
-    @include respond-below(sm) {}
 
     @include respond-below(xs) {
       padding-top: 0px;
@@ -42,10 +36,6 @@
   list-style: none;
   display: flex;
   justify-content: space-between;
-  
-  @include respond-below(md) {}
-
-  @include respond-below(sm) {}
 
   @include respond-below(xs) {
     flex-direction: column;
@@ -64,12 +54,9 @@
       padding-top: 35px;
     }
 
-    @include respond-below(sm) {}
-
     @include respond-below(xs) {
       padding-top: 30px;
       overflow: auto;
-      text-align: center;
     }
   }
 
@@ -77,10 +64,6 @@
     list-style: none;
     display: flex;
     justify-content: space-between;
-    
-    @include respond-below(md) {}
-
-    @include respond-below(sm) {}
 
     @include respond-below(xs) {
       min-width: 720px;

@@ -3,16 +3,35 @@
     padding: 100px 0px 25px;
     width: 100%;
     margin: 0 auto;
+
+    @include respond-below(lg) {
+      padding: 85px 0 25px;
+    }
+
+    @include respond-below(md) {
+      padding: 70px 0 25px;
+    }
+
+    @include respond-below(xs) {
+      padding: 40px 0px 0px;
+    }
   }
+
   &__info {
     background-color: var(--brand-color);
     display: flex;
     flex-direction: column;
     align-items: center;
   }
+
   &__logo {
     padding-top: 55px;
+
+    @include respond-below(xs) {
+      padding-top: 35px;
+    }
   }
+
   &__info-text {
     color: var(--text-white);
     padding-top: 40px;
@@ -20,5 +39,9 @@
     font-weight: 300;
     font-size: 12px;
     line-height: 18px;
+
+    @include respond-below(xs) {
+      padding: 20px 0;
+    }
   }
 }

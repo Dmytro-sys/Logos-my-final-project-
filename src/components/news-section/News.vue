@@ -8,8 +8,6 @@
 
           <div class="news__small-card">
 
-            <div class="small-card__wrap--news">
-
               <ul class="small-card__list">
 
                 <v-small-card
@@ -26,8 +24,6 @@
               :to="'/blog/?tag=news'">
               See all
               </router-link>
-
-            </div> <!-- end small-card__wrap -->
 
           </div> <!-- end news__small-card -->
 

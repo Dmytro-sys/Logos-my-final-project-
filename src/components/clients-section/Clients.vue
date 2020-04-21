@@ -4,8 +4,10 @@
 
       <div class="clients__wrap">
 
-        <div class="clients__bgimage-overlay"></div>
-        <img class="clients__bgimage" src="@/assets/images/Clients-bg.jpg" alt="">
+        <div class="clients__bgimage-wrap">
+          <div class="clients__bgimage-overlay"></div>
+          <img class="clients__bgimage" src="@/assets/images/Clients-bg.jpg" alt="">
+        </div>
 
         <div class="clients__content">
 

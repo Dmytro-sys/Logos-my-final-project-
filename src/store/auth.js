@@ -22,10 +22,7 @@ export default {
     },
   },
   actions: {
-    login({
-      commit,
-      getters,
-    }) {
+    login({ commit, getters }) {
       if (getters.isLogin) return Promise.resolve();
 
       return new Promise((resolve, reject) => {

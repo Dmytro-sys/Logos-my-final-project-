@@ -16,7 +16,7 @@
             <div class='articles__buttons'>
 
               <router-link
-               class='button'
+               class='articles__button button'
                :to="{ path: 'blog', query: { tag: tag.data.name } }"
                :key='tag.id'
                v-for='tag in tags'

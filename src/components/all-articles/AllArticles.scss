@@ -11,6 +11,22 @@
     width: 100%;
     padding: 90px 0;
     background-color: var(--brand-color);
+
+    @include respond-below(lg) {
+      padding: 70px 0;
+    }
+
+    @include respond-below(md) {
+      padding: 50px 0;
+    }
+
+    @include respond-below(sm) {
+      padding: 30px 0;
+    }
+
+    @include respond-below(xs) {
+      padding: 20px 0;
+    }
   }
 
   &__baner-text {
@@ -20,12 +36,48 @@
     font-size: 48px;
     line-height: 72px;
     text-transform: uppercase;
+
+    @include respond-below(sm) {
+      font-size: 41px;
+      line-height: 65px;
+    }
   }
 
   &__buttons {
     margin-top: 90px;
     display: flex;
     justify-content: space-between;
+
+    @include respond-below(lg) {
+      margin-top: 70px;
+    }
+
+    @include respond-below(md) {
+      margin-top: 50px;
+    }
+
+    @include respond-below(sm) {
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__button {
+    @include respond-below(lg) {
+      padding: 10px 60px;
+    }
+
+    @include respond-below(md) {
+      padding: 10px 50px;
+    }
+    @include respond-below(sm) {
+      width: 49%;
+      margin-bottom: 15px;
+    }
+    @include respond-below(xs) {
+      width: 100%;
+      margin-bottom: 10px;
+    }
   }
 
   &__list {
@@ -33,12 +85,32 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    @include respond-below(lg) {
+      margin-top: 70px;
+    }
+
+    @include respond-below(md) {
+      margin-top: 50px;
+    }
+
+    @include respond-below(sm) {
+      margin-top: 30px;
+    }
   }
 
   &__item {
     width: 32%;
     margin-bottom: 40px;
     margin-right: 0;
+
+    @include respond-below(sm) {
+      width: 49%;
+    }
+
+    @include respond-below(xs) {
+      width: 100%;
+    }
   }
 
 }

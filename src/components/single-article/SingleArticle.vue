@@ -16,7 +16,7 @@
 
             <router-link
             class='article__info-link'
-            :to="'/'">
+            :to="`/blog/?tag=${getTag(singleArticle.ref)}`">
             {{ getTag(singleArticle.ref) }}
             </router-link>
 

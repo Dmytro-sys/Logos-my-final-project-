@@ -27,7 +27,7 @@
 
             <router-link
             class='baner__info-link'
-            :to="'/'">
+            :to="`/blog/?tag=${getTag(article.data.ref)}`">
             {{ getTag(article.data.ref) }}
             </router-link>
 

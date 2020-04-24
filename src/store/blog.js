@@ -1,6 +1,4 @@
 import { http } from '@/js/plugins/http';
-/* eslint-disable-next-line */
-import router from '@/router/';
 
 const mutt = {
   SET_TAGS: 'SET_TAGS',
@@ -203,33 +201,55 @@ export default {
         });
       });
     },
-    getArticlesByTag({ state, commit }, { tagName, isTagExist }) {
-      const findTag = state.tags.find((i) => i.data.name === tagName);
-      if (!findTag && isTagExist) return router.replace('/Login');
-      // - tag exist and valid || tag is not exist
-      /* eslint-disable-next-line */
-      const getQueryData = () => {
-        return isTagExist
-          ? {
-            params: {
-              $filter: `data/ref/iv eq '${findTag.id}'`,
+    getArticlesByTag({ commit }, tagId) {
+      const objectWithSettings = tagId
+        ? {
+          params: {
+            $filter: `data/ref/iv eq '${tagId}'`,
+          },
+        }
+        : null;
+      return Promise.all([
+        (new Promise((resolve, reject) => {
+          http.get('/api/content/suffix-blog/articles/', objectWithSettings).then(
+            (r) => {
+              commit(mutt.SET_FILT_ARTICLES, r.data.items);
+              resolve(r.data);
             },
-          }
-          : null;
-      };
-
-      return new Promise((resolve, reject) => {
-        http.get('/api/content/suffix-blog/articles/', getQueryData()).then(
-          (r) => {
-            commit(mutt.SET_FILT_ARTICLES, r.data.items);
-            resolve(r.data);
-          },
-          ({ response }) => {
-            reject(response.data);
-          },
-        );
-      });
+            ({ response }) => {
+              reject(response.data);
+            },
+          );
+        })),
+      ]);
     },
+    // getArticlesByTag({ state, commit }, { tagName, isTagExist }) {
+    //   const findTag = state.tags.find((i) => i.data.name === tagName);
+    //   if (!findTag && isTagExist) return Promise.resolve();
+    //   // - tag exist and valid || tag is not exist
+    //   /* eslint-disable-next-line */
+    //   const getQueryData = () => {
+    //     return isTagExist
+    //       ? {
+    //         params: {
+    //           $filter: `data/ref/iv eq '${findTag.id}'`,
+    //         },
+    //       }
+    //       : null;
+    //   };
+
+    //   return new Promise((resolve, reject) => {
+    //     http.get('/api/content/suffix-blog/articles/', getQueryData()).then(
+    //       (r) => {
+    //         commit(mutt.SET_FILT_ARTICLES, r.data.items);
+    //         resolve(r.data);
+    //       },
+    //       ({ response }) => {
+    //         reject(response.data);
+    //       },
+    //     );
+    //   });
+    // },
   },
   getters: {
     mainArticle(state) {

@@ -60,20 +60,21 @@ export default {
   computed: {
     ...mapState('blog', ['tags', 'filteredArticles']),
   },
-  beforeRouteUpdate(to, from, next) {
-    this.articleRequest(to, next);
-  },
+  // beforeRouteUpdate(to, from, next) {
+  //   this.articleRequest(to, next);
+  // },
   methods: {
     ...mapActions('blog', ['getArticlesByTag']),
-    articleRequest(route, callback = () => {}) {
-      this.getArticlesByTag({
-        tagName: route.query.tag,
-        isTagExist: 'tag' in route.query,
-      }).then(callback);
-    },
   },
   created() {
-    this.articleRequest(this.$route);
+    this.getArticlesByTag().then(() => {
+      /* eslint-disable-next-line */
+      const el = this.tags.find((i) => {
+        return i.data.name === this.$route.query.tag;
+      });
+      const tagId = el && el.id ? el.id : null;
+      this.getArticlesByTag(tagId);
+    });
   },
 };
 </script>

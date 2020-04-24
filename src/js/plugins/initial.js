@@ -1,3 +1,4 @@
+/* eslint-disable */
 import store from '@/store';
 
 const getGlobalData = () => Promise.all([

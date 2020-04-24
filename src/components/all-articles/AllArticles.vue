@@ -61,25 +61,21 @@ export default {
     ...mapState('blog', ['filteredArticles', 'tags']),
   },
   beforeRouteUpdate(to, from, next) {
-    this.getArticlesByTag({
-      tagName: to.query.tag,
-      isTagExist: 'tag' in to.query,
-    }).then(next);
+    this.articleRequest(to, next);
   },
   methods: {
-    ...mapActions('blog', ['getArticlesByTag']),
     articleRequest(route, callback = () => {}) {
       this.getArticlesByTag({
         tagName: route.query.tag,
         isTagExist: 'tag' in route.query,
       }).then(callback);
     },
+    ...mapActions('blog', ['getArticlesByTag']),
   },
   created() {
     this.articleRequest(this.$route);
   },
 };
-
 </script>
 
 <style lang='scss' scoped>

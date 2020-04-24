@@ -1,8 +1,8 @@
-/* eslint-disable */
-// import store from '@/store';
+/* eslint-disable-next-line */
+import store from '@/store';
 
-// const getGlobalData = () => Promise.all([
-//   store.dispatch('auth/login').then(() => store.dispatch('blog/getTags')),
-// ]);
+const getGlobalData = () => Promise.all([
+  store.dispatch('auth/login').then(() => store.dispatch('blog/getTags')),
+]);
 
-// export default getGlobalData;
+export { getGlobalData as default };

@@ -19,7 +19,7 @@
 
         <router-link
         class="small-card__link"
-        :to="'/'">
+        :to="`/blog/?tag=${getTag(data.ref)}`">
         {{ getTag(data.ref) }}
         </router-link>
       </div>

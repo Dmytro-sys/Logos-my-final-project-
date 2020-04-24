@@ -38,7 +38,7 @@
               <router-link
               class="button see__all"
               v-bind="tag"
-              :to="'/blog/?tag=featured'">
+              :to="`/blog/?tag=${getTag(tag[0].data.ref)}`">
               See all
               </router-link>
 

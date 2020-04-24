@@ -58,23 +58,29 @@ import { mapState, mapActions } from 'vuex';
 
 export default {
   computed: {
-    ...mapState('blog', ['tags', 'filteredArticles']),
+    ...mapState('blog', ['filteredArticles', 'tags']),
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.getArticlesByTag({
+      tagName: to.query.tag,
+      isTagExist: 'tag' in to.query,
+    }).then(next);
   },
   methods: {
     ...mapActions('blog', ['getArticlesByTag']),
+    articleRequest(route, callback = () => {}) {
+      this.getArticlesByTag({
+        tagName: route.query.tag,
+        isTagExist: 'tag' in route.query,
+      }).then(callback);
+    },
   },
   created() {
-    this.getArticlesByTag().then(() => {
-      const el = this.tags.find((i) => i.data.name === this.$route.query.tag);
-      const tagId = el && el.id ? el.id : null;
-      this.getArticlesByTag(tagId);
-    });
+    this.articleRequest(this.$route);
+    console.log(this.$route.query.tag);
   },
-  // beforeRouteUpdate(to, from, next) {
-  //   this.getArticlesByTag(to.params.tagId);
-  //   next();
-  // },
 };
+
 </script>
 
 <style lang='scss' scoped>

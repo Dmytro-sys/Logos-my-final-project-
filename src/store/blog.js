@@ -1,4 +1,6 @@
 import { http } from '@/js/plugins/http';
+/* eslint-disable */
+import router from '@/router/';
 
 const mutt = {
   SET_TAGS: 'SET_TAGS',
@@ -185,47 +187,52 @@ export default {
     },
     getArticleBySlug({ commit }, slug) {
       return new Promise((resolve, reject) => {
-        http
-          .get('/api/content/suffix-blog/articles/', {
-            params: {
-              $filter: `data/slug/iv eq '${slug}'`,
-            },
-          })
-          .then(
-            (r) => {
-              commit(
-                mutt.SET_SINGLE_ARCTICLE,
-                r.data.items[0] ? r.data.items[0].data : null,
-              );
-              resolve(r.data);
-            },
-            ({ response }) => {
-              reject(response.data);
-            },
+        http.get('/api/content/suffix-blog/articles/', {
+          params: {
+            $filter: `data/slug/iv eq '${slug}'`,
+          },
+        }).then((r) => {
+          commit(
+            mutt.SET_SINGLE_ARCTICLE,
+            r.data.items[0] ? r.data.items[0].data : null,
           );
+          resolve(r.data);
+        },
+        ({ response }) => {
+          reject(response.data);
+        });
       });
     },
-    getArticlesByTag({ commit }, tagId) {
-      const objectWithSettings = tagId
-        ? {
-          params: {
-            $filter: `data/ref/iv eq '${tagId}'`,
+    getArticlesByTag({ state, commit }, { tagName, isTagExist }) {
+      const findTag = state.tags.find((i) => i.data.name === tagName);
+      if (!findTag && isTagExist) return router.replace('/Login');
+      console.log(findTag);
+      
+      // - tag exist and valid || tag is not exist
+
+      const getQueryData = () => {
+        return isTagExist
+          ? {
+            params: {
+              $filter: `data/ref/iv eq '${findTag.id}'`,
+            },
+          }
+          : null;
+      };
+
+      return new Promise((resolve, reject) => {
+        http.get('/api/content/suffix-blog/articles/', getQueryData()).then(
+          (r) => {
+            commit(mutt.SET_FILT_ARTICLES, r.data.items);
+            resolve(r.data);
+            console.log(r.data.items);
+            
           },
-        }
-        : null;
-      return Promise.all([
-        (new Promise((resolve, reject) => {
-          http.get('/api/content/suffix-blog/articles/', objectWithSettings).then(
-            (r) => {
-              commit(mutt.SET_FILT_ARTICLES, r.data.items);
-              resolve(r.data);
-            },
-            ({ response }) => {
-              reject(response.data);
-            },
-          );
-        })),
-      ]);
+          ({ response }) => {
+            reject(response.data);
+          },
+        );
+      });
     },
   },
   getters: {

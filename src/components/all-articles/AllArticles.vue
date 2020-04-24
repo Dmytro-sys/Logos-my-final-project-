@@ -77,7 +77,6 @@ export default {
   },
   created() {
     this.articleRequest(this.$route);
-    console.log(this.$route.query.tag);
   },
 };
 

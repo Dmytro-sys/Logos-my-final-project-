@@ -206,7 +206,6 @@ export default {
     getArticlesByTag({ state, commit }, { tagName, isTagExist }) {
       const findTag = state.tags.find((i) => i.data.name === tagName);
       if (!findTag && isTagExist) return router.replace('/Login');
-      console.log(findTag);
       
       // - tag exist and valid || tag is not exist
 
@@ -225,8 +224,6 @@ export default {
           (r) => {
             commit(mutt.SET_FILT_ARTICLES, r.data.items);
             resolve(r.data);
-            console.log(r.data.items);
-            
           },
           ({ response }) => {
             reject(response.data);

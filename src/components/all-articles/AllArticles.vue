@@ -58,19 +58,19 @@ import { mapState, mapActions } from 'vuex';
 
 export default {
   computed: {
-    ...mapState('blog', ['filteredArticles', 'tags']),
+    ...mapState('blog', ['tags', 'filteredArticles']),
   },
   beforeRouteUpdate(to, from, next) {
     this.articleRequest(to, next);
   },
   methods: {
+    ...mapActions('blog', ['getArticlesByTag']),
     articleRequest(route, callback = () => {}) {
       this.getArticlesByTag({
         tagName: route.query.tag,
         isTagExist: 'tag' in route.query,
       }).then(callback);
     },
-    ...mapActions('blog', ['getArticlesByTag']),
   },
   created() {
     this.articleRequest(this.$route);

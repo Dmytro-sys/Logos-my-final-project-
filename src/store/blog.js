@@ -1,5 +1,5 @@
 import { http } from '@/js/plugins/http';
-/* eslint-disable */
+/* eslint-disable-next-line */
 import router from '@/router/';
 
 const mutt = {
@@ -206,9 +206,8 @@ export default {
     getArticlesByTag({ state, commit }, { tagName, isTagExist }) {
       const findTag = state.tags.find((i) => i.data.name === tagName);
       if (!findTag && isTagExist) return router.replace('/Login');
-      
       // - tag exist and valid || tag is not exist
-
+      /* eslint-disable-next-line */
       const getQueryData = () => {
         return isTagExist
           ? {
